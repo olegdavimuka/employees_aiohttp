@@ -4,10 +4,12 @@
     <ul>
         <li>id: {{ chief.id }}, name: {{ chief.name }}, position: {{ chief.position }}, salary: {{ chief.salary }}, chief: {{ chief.chief }} </li>
         {% for employee in chief.subordinates recursive %}
+            <ul>
             <li>id: {{ employee.id }}, name: {{ employee.name }}, position: {{ employee.position }}, salary: {{ employee.salary }}, chief: {{ employee.chief }} </li>
             {% if employee.subordinates %}
-                <ul> {{ loop(employee.subordinates) }} </ul>
+                {{ loop(employee.subordinates) }}
             {% endif %}
+            </ul>
         {% endfor %}
         </li>
     </ul>
