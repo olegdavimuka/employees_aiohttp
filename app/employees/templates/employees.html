@@ -1,0 +1,16 @@
+{% set title = "Employees" %}
+
+{% if chief %}
+    <ul>
+        <li>id: {{ chief.id }}, name: {{ chief.name }}, position: {{ chief.position }}, salary: {{ chief.salary }}, chief: {{ chief.chief }} </li>
+        {% for employee in chief.subordinates recursive %}
+            <li>id: {{ employee.id }}, name: {{ employee.name }}, position: {{ employee.position }}, salary: {{ employee.salary }}, chief: {{ employee.chief }} </li>
+            {% if employee.subordinates %}
+                <ul> {{ loop(employee.subordinates) }} </ul>
+            {% endif %}
+        {% endfor %}
+        </li>
+    </ul>
+{% else %}
+    <p>No employees are available.</p>
+{% endif %}
